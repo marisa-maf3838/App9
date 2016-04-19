@@ -137,11 +137,10 @@
   <!--Give page id page two-->
   <div data-role="page" id="pagetwo">
     <div data-role="header">
-    <h1>Primary Colors</h1></div><!-- /header -->
+    <h1>Got Zika?</h1></div><!-- /header -->
     <div data-role="content">	
-      <h2>Push button to take picture.</h2>
+      <h2>Push button to take/choose picture.</h2>
       <div>
-        Press orange button to create or choose image file:
         <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
       </div>
       <div id="messageDisplayArea"></div>
@@ -152,7 +151,7 @@
         var context = canvas.getContext("2d");
         context.font = '20pt Calibri';
         context.fillStyle = "black";
-        context.fillText("Original image will go here", 10, 20);
+        context.fillText("Image will go here", 10, 20);
       </script>
      
     </div><!-- /content -->
