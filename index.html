@@ -92,16 +92,9 @@
         /* new Image() and img.onload start some kind of new image creation process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
         var img = new Image();
         img.onload = function() {
-        
-        
           //Add in deleded text so image shows
           drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
-          
-          
-          
-        
         }// end of img.onload
-      
         img.src = reader.result;
       } //  end of reader.onload
       
@@ -113,6 +106,16 @@
       messageDisplayArea.innerHTML = "File not supported!"
     } // end of the else statement if file in NOT an image
   }); // end of the fileInput.addEventListener function
+  function initialise(){
+  	var canvas = document.getElementById("myCanvas");
+  	canvas.addEventListener("touchstart", doTouchStart, false);
+  }
+  function doTouchStart(event){
+  	event.preventDefault();
+  	canvas_x = event.targetTouches[0].pageX;
+  	canvas_y = event.targetTouches[0].pageY;
+  	alert("X=" + canvas_x + " Y=" + canvas_y);
+  }
  } // end of the window.onload function
  </script>
  </head>
