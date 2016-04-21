@@ -99,24 +99,26 @@
       } //  end of reader.onload
       
       reader.readAsDataURL(file);
+      return;
     } // end of the if statement checking that file is an image
     else
     {
       // this is what happens if the orignial file selected is not an image file
       messageDisplayArea.innerHTML = "File not supported!"
+      return;
     } // end of the else statement if file in NOT an image
   }); // end of the fileInput.addEventListener function
- } // end of the window.onload function
- function initialise(){
-  	var canvas = document.getElementById("myCanvas");
-  	canvas.addEventListener("touchstart", doTouchStart, false);
-  }
+  var canvas = document.getElementById("myCanvas");
+  canvas.addEventListener("touchstart", doTouchStart, false);
   function doTouchStart(event){
   	event.preventDefault();
   	canvas_x = event.targetTouches[0].pageX;
   	canvas_y = event.targetTouches[0].pageY;
   	alert("X=" + canvas_x + " Y=" + canvas_y);
   }
+ } // end of the window.onload function
+  	
+  
  </script>
  </head>
  <body>
