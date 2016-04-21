@@ -106,7 +106,8 @@
       messageDisplayArea.innerHTML = "File not supported!"
     } // end of the else statement if file in NOT an image
   }); // end of the fileInput.addEventListener function
-  function initialise(){
+ } // end of the window.onload function
+ function initialise(){
   	var canvas = document.getElementById("myCanvas");
   	canvas.addEventListener("touchstart", doTouchStart, false);
   }
@@ -116,10 +117,10 @@
   	canvas_y = event.targetTouches[0].pageY;
   	alert("X=" + canvas_x + " Y=" + canvas_y);
   }
- } // end of the window.onload function
  </script>
  </head>
- <body>
+ <body onLoad=initialise()>
+ 
  <!--Copy and paste page from App 3. Change heading. Add in more text with direction on how to take a picture. Add button with image of camera to go to page two-->
   <div data-role="page" id="pageone">
 	<div data-role="header">
