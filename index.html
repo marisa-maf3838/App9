@@ -118,15 +118,17 @@
   	event.preventDefault();
   	sourceX = event.targetTouches[0].pageX;
   	sourceY = event.targetTouches[0].pageY;
-  	if(sourceX<100)
+  	var xconfig = img.naturalWidth/2;
+  	var yconfig = img.naturalHeight/2;
+  	if(sourceX<xconfig)
   		sourceX=0;
   	else
-  		sourceX-=100;
-  	if(sourceY<100)
+  		sourceX-=xconfig;
+  	if(sourceY<yconfig)
   		sourceY=0;
   	else
-  		sourceY-=100;
-  	drawImageIOSFix(context, img, sourceX, sourceY, img.naturalWidth/6, img.naturalHeight/5, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
+  		sourceY-=yconfig;
+  	drawImageIOSFix(context, img, sourceX, sourceY, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
   	alert("X=" + sourceX + " Y=" + sourceY);
   }
  } // end of the window.onload function
