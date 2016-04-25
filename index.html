@@ -77,7 +77,6 @@
  function drawImageIOSFix(ctx, img, sx, sy, sw, sh, dx, dy, dw, dh) {
   var vertSquashRatio = detectVerticalSquash(img);
   ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh / vertSquashRatio);
-  ctx.rotate(90*Math.PI/180);
  }
  function revert(){
  		drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
@@ -177,6 +176,7 @@
         context.font = '20pt Calibri';
         context.fillStyle = "black";
         context.fillText("Image will go here", 10, 20);
+        context.rotate(90*Math.PI/180);
       </script>
      
     </div><!-- /content -->
