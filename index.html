@@ -27,6 +27,7 @@
   
   Brief Description of Goal of Code:
   To allow students in FRI to better understand and struggle though coding, espeically geared toward making an app for the future at home diagnostics fo rthe ZIKA virus. We need to be able to touch the picture and analyze the picture.
+  so far we are only implementing touch selection of a ROI
  
   Known Issues:
   None as of thus far.
@@ -41,7 +42,10 @@
   <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 
- <script>
+ 	<script>
+	var img
+	var sourceX;	//instantiate x and y coordinates of touch so it can be used outside of capture function
+	var sourceY;
   var docMod = document.lastModified; // gets last modified date and time of the index.html file
   console.log("This file last modified  " + docMod); // displays last modified date and time in the javascipt browser console 
 /* detectVerticalSquash & drawImageIOSFix = are functions that are critical due to a flaw in the iPhone camera software that squishes any photos displayed on an HTML5 canvas element. https://github.com/stomita/ios-imagefile-megapixel
@@ -74,14 +78,17 @@
   var vertSquashRatio = detectVerticalSquash(img);
   ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh / vertSquashRatio);
  }
+ function revert(){
+ 		drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
+ }
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
  window.onload = function() {
-  var fileInput = document.getElementById('fileInput');
-  var messageDisplayArea = document.getElementById('messageDisplayArea');
-  /* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
-  fileInput.addEventListener('change', function(e) {
-    var file = fileInput.files[0];
-    var imageType = /image.*/;
+  	var fileInput = document.getElementById('fileInput');
+  	var messageDisplayArea = document.getElementById('messageDisplayArea');
+  	/* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
+  	fileInput.addEventListener('change', function(e) {
+    	var file = fileInput.files[0];
+    	var imageType = /image.*/;
     /* if (file.type.match(imageType)) checks that the selected file is indeed an image. */
     if (file.type.match(imageType)) {
       /* new FileReader(); and reader.onload start some kind of file reading process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
@@ -90,33 +97,48 @@
         /* messageDisplayArea.innerHTML not needed but allows you to send a message at this point in the program. */
         messageDisplayArea.innerHTML = "You picked an image!";
         /* new Image() and img.onload start some kind of new image creation process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
-        var img = new Image();
+        img = new Image();
         img.onload = function() {
-        
-        
           //Add in deleded text so image shows
           drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
-          
-          
-          
-        
         }// end of img.onload
-      
         img.src = reader.result;
       } //  end of reader.onload
       
       reader.readAsDataURL(file);
+      return;
     } // end of the if statement checking that file is an image
     else
     {
       // this is what happens if the orignial file selected is not an image file
       messageDisplayArea.innerHTML = "File not supported!"
+      return;
     } // end of the else statement if file in NOT an image
   }); // end of the fileInput.addEventListener function
+  var canvas = document.getElementById("myCanvas");
+  canvas.addEventListener("touchstart", doTouchStart, false);//add testing that keeps checking for touches and captures coordinates
+  function doTouchStart(event){
+  	event.preventDefault();
+  	sourceX = event.targetTouches[0].pageX;
+  	sourceY = event.targetTouches[0].pageY;
+  	if(sourceX<200)
+  		sourceX=0;
+  	else
+  		sourceX-=200;
+  	if(sourceY<200)
+  		sourceY=0;
+  	else
+  		sourceY-=200;
+  	drawImageIOSFix(context, img, sourceX, sourceY, 400, 400, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
+  	alert("X=" + sourceX + " Y=" + sourceY);
+  }
  } // end of the window.onload function
+  	
+  
  </script>
  </head>
  <body>
+ 
  <!--Copy and paste page from App 3. Change heading. Add in more text with direction on how to take a picture. Add button with image of camera to go to page two-->
   <div data-role="page" id="pageone">
 	<div data-role="header">
@@ -158,7 +180,7 @@
      
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
-      <p>DIY Diagnostics</p>
+      <p>DIY Diagnostics</p><a href="#pagetwo" onclick="revert();" data-role="button">Revert Image</a>
     </div><!-- /footer -->
   </div><!-- /page -->
  </body>
