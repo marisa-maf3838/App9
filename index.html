@@ -100,6 +100,7 @@
         img = new Image();
         img.onload = function() {
           //Add in deleded text so image shows
+          context.rotate(90*Math.PI/180);
           drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
         }// end of img.onload
         img.src = reader.result;
