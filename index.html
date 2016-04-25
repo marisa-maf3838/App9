@@ -126,7 +126,7 @@
   		sourceY=0;
   	else
   		sourceY-=50;*/
-  	drawImageIOSFix(context, img, sourceX, sourceY, img.naturalWidth*(.1), img.naturalHeight*(.1), 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
+  	drawImageIOSFix(context, img, sourceX-img.naturalWidth*(.1), sourceY*img.naturalHeight*(.1), img.naturalWidth*(.1), img.naturalHeight*(.1), 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
   	alert("X=" + sourceX + " Y=" + sourceY);
   }
  } // end of the window.onload function
