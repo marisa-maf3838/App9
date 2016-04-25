@@ -80,12 +80,15 @@
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
  window.onload = function() {
  	var img
-  var fileInput = document.getElementById('fileInput');
-  var messageDisplayArea = document.getElementById('messageDisplayArea');
-  /* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
-  fileInput.addEventListener('change', function(e) {
-    var file = fileInput.files[0];
-    var imageType = /image.*/;
+ 	function revert(){
+ 		drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
+ 	}
+  	var fileInput = document.getElementById('fileInput');
+  	var messageDisplayArea = document.getElementById('messageDisplayArea');
+  	/* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
+  	fileInput.addEventListener('change', function(e) {
+    	var file = fileInput.files[0];
+    	var imageType = /image.*/;
     /* if (file.type.match(imageType)) checks that the selected file is indeed an image. */
     if (file.type.match(imageType)) {
       /* new FileReader(); and reader.onload start some kind of file reading process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
@@ -177,7 +180,7 @@
      
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
-      <p>DIY Diagnostics</p>
+      <p>DIY Diagnostics</p><a href="#pagetwo" onclick="revert();" data-role="button">Revert Image</a>
     </div><!-- /footer -->
   </div><!-- /page -->
  </body>
