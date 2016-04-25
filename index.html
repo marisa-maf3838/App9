@@ -100,7 +100,6 @@
         img = new Image();
         img.onload = function() {
           //Add in deleded text so image shows
-          context.rotate(90*Math.PI/180);
           drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
         }// end of img.onload
         img.src = reader.result;
@@ -175,6 +174,7 @@
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext("2d");
         context.font = '20pt Calibri';
+        context.rotate(20*Math.PI/180);
         context.fillStyle = "black";
         context.fillText("Image will go here", 10, 20);
       </script>
