@@ -118,15 +118,15 @@
   	event.preventDefault();
   	sourceX = event.targetTouches[0].pageX;
   	sourceY = event.targetTouches[0].pageY;
-  	if(sourceX<50)
+  	if(sourceX<100)
   		sourceX=0;
   	else
-  		sourceX-=50;
-  	if(sourceY<50)
+  		sourceX-=100;
+  	if(sourceY<100)
   		sourceY=0;
   	else
-  		sourceY-=50;
-  	drawImageIOSFix(context, img, sourceX, sourceY, 180, 150, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
+  		sourceY-=100;
+  	drawImageIOSFix(context, img, sourceX, sourceY, img.naturalWidth/6, img.naturalHeight/5, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
   	alert("X=" + sourceX + " Y=" + sourceY);
   }
  } // end of the window.onload function
