@@ -121,14 +121,14 @@
   	event.preventDefault();
   	sourceX = event.targetTouches[0].pageX;
   	sourceY = event.targetTouches[0].pageY;
-  	if(sourceX<200)
+  	/*if(sourceX<200)
   		sourceX=0;
   	else
   		sourceX-=200;
   	if(sourceY<200)
   		sourceY=0;
   	else
-  		sourceY-=200;
+  		sourceY-=200;*/
   	drawImageIOSFix(context, img, sourceX, sourceY, 400, 400, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
   	alert("X=" + sourceX + " Y=" + sourceY);
   }
