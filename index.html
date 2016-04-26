@@ -119,24 +119,22 @@
   canvas.addEventListener("touchstart", doTouchStart, false);//add testing that keeps checking for touches and captures coordinates
   function doTouchStart(event){
   	event.preventDefault();
-  	sourceX = event.targetTouches[0].pageX;
-  	sourceY = event.targetTouches[0].pageY;
+  	sourceX = event.targetTouches[0].pageX;//captures x touch value
+  	sourceY = event.targetTouches[0].pageY;//captures y touch value
   	sourceX = (sourceX/540)*img.naturalWidth;//adjusts the width to scale with the source image
   	sourceY = ((sourceY-200)/500)*img.naturalHeight;//adjusts the height to scale with the source image
-  	if(sourceX<250)//these if statements check to see if the x value for the source picture is too close to the edge of the picture
-  		sourceX=0;
+  	if(sourceX<300)//these if statements check to see if the x and y values for the source picture is too close to the edge of the picture, if they are they are adjusted accordingly
+  		sourceX=0;//aligns the picture to the edge if it was
   	else
-  		sourceX-=250;
-  	if(sourceY<300)
-  		sourceY=0;
+  		sourceX-=300;//merely subtracts to center the image if it wasnt
+  	if(sourceY<250)
+  		sourceY=0;//same as x
   	else
-  		sourceY-=300;
-  	if(sourceX>(img.naturalWidth-250))
-  		sourceX = sourceX - (250+(sourceX-(img.naturalWidth-250)));
-  	if(sourceY>(img.naturalHeight-300))
-  		sourceY = sourceY - (300+(sourceY-(img.naturalHeight-300)));
-  	context.rect(0, 0, 600, 500);
-  	context.stroke();
+  		sourceY-=250;//same as x
+  	if(sourceX>(img.naturalWidth-300))//checks if the touch was too close to the right margin
+  		sourceX = sourceX - (300+(sourceX-(img.naturalWidth-300)));//adjusts if it was
+  	if(sourceY>(img.naturalHeight-250))//same as x
+  		sourceY = sourceY - (250+(sourceY-(img.naturalHeight-250)));
   	drawImageIOSFix(context, img, sourceX, sourceY, 500, 600, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
   }
  } // end of the window.onload function
@@ -152,7 +150,7 @@
 		<h1>Got Zika?</h1>
 	</div><!-- change heading to Got Zika? -->
 
-	<div data-role="main" class="ui-content">	
+	<div data-role="main" class="ui-content">	<!--intro page with instructions and a button that goes to the next page-->
 		<center>So you think you have Zika, huh? Let's find out if that's really true!</center>
 		<p></p>
 		<center>Stand one foot away from the DIY Diagnostics box.</center>
@@ -187,7 +185,7 @@
      
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
-      <p>DIY Diagnostics</p><a href="#pagetwo" onclick="revert();" data-role="button">Revert Image</a>
+      <p>DIY Diagnostics</p><a href="#pagetwo" onclick="revert();" data-role="button">Revert Image</a><!--reverts image to how it was when originally uploaded-->
     </div><!-- /footer -->
   </div><!-- /page -->
  </body>
