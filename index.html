@@ -106,7 +106,6 @@
       } //  end of reader.onload
       
       reader.readAsDataURL(file);
-      alert("Click on left vial!");
       return;
     } // end of the if statement checking that file is an image
     else
@@ -116,6 +115,7 @@
       return;
     } // end of the else statement if file in NOT an image
   }); // end of the fileInput.addEventListener function
+  alert("Click on left vial!");
   var canvas = document.getElementById("myCanvas");
   canvas.addEventListener("touchstart", doTouchStart, false);//add testing that keeps checking for touches and captures coordinates
   function doTouchStart(event){
