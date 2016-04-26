@@ -102,10 +102,9 @@
           //Add in deleded text so image shows
           drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
         }// end of img.onload
-        alert("Click on left vial!");
         img.src = reader.result;
       } //  end of reader.onload
-      
+      alert("Click on left vial!");
       reader.readAsDataURL(file);
       return;
     } // end of the if statement checking that file is an image
