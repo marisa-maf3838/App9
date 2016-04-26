@@ -136,6 +136,7 @@
   	if(sourceY>(img.naturalHeight-300))
   		sourceY = sourceY - (300+(sourceY-(img.naturalHeight-300)));
   	context.rect(0, 0, 600, 500);
+  	context.stroke();
   	drawImageIOSFix(context, img, sourceX, sourceY, 300, 600, 0, 0, 300, 600);//draws cropped image to the same ratio as the canvas but just scaled down
   }
  } // end of the window.onload function
