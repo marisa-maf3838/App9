@@ -102,6 +102,7 @@
           //Add in deleded text so image shows
           drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
         }// end of img.onload
+        alert("Click on left vial!");
         img.src = reader.result;
       } //  end of reader.onload
       
@@ -114,7 +115,6 @@
       messageDisplayArea.innerHTML = "File not supported!"
       return;
     } // end of the else statement if file in NOT an image
-    alert("Click on left vial!");
   }); // end of the fileInput.addEventListener function
   var canvas = document.getElementById("myCanvas");
   canvas.addEventListener("touchstart", doTouchStart, false);//add testing that keeps checking for touches and captures coordinates
