@@ -121,9 +121,9 @@
   	event.preventDefault();
   	sourceX = event.targetTouches[0].pageX;
   	sourceY = event.targetTouches[0].pageY;
-  	sourceX = (sourceX/540)*img.naturalWidth;
-  	sourceY = ((sourceY-200)/500)*img.naturalHeight;
-  	if(sourceX<250)
+  	sourceX = (sourceX/540)*img.naturalWidth;//adjusts the width to scale with the source image
+  	sourceY = ((sourceY-200)/500)*img.naturalHeight;//adjusts the height to scale with the source image
+  	if(sourceX<250)//these if statements check to see if the x value for the source picture is too close to the edge of the picture
   		sourceX=0;
   	else
   		sourceX-=250;
@@ -137,7 +137,7 @@
   		sourceY = sourceY - (300+(sourceY-(img.naturalHeight-300)));
   	context.rect(0, 0, 600, 500);
   	context.stroke();
-  	drawImageIOSFix(context, img, sourceX, sourceY, 500, 600, 0, 0, 500, 600);//draws cropped image to the same ratio as the canvas but just scaled down
+  	drawImageIOSFix(context, img, sourceX, sourceY, 500, 600, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
   }
  } // end of the window.onload function
   	
