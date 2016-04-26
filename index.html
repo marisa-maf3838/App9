@@ -125,16 +125,16 @@
   	sourceY = ((sourceY-200)/500)*img.naturalHeight;//adjusts the height to scale with the source image
   	if(sourceX<300)//these if statements check to see if the x and y values for the source picture is too close to the edge of the picture, if they are they are adjusted accordingly
   		sourceX=0;//aligns the picture to the edge if it was
+  	else if(sourceX>(img.naturalWidth-300))//checks if the touch was too close to the right margin
+  		sourceX = sourceX - (300+(sourceX-(img.naturalWidth-300)));//adjusts if it was
   	else
   		sourceX-=300;//merely subtracts to center the image if it wasnt
   	if(sourceY<250)
   		sourceY=0;//same as x
+  	else if(sourceY>(img.naturalHeight-250))//same as x
+  		sourceY = sourceY - (250+(sourceY-(img.naturalHeight-250)));	
   	else
   		sourceY-=250;//same as x
-  	if(sourceX>(img.naturalWidth-300))//checks if the touch was too close to the right margin
-  		sourceX = sourceX - (300+(sourceX-(img.naturalWidth-300)));//adjusts if it was
-  	if(sourceY>(img.naturalHeight-250))//same as x
-  		sourceY = sourceY - (250+(sourceY-(img.naturalHeight-250)));
   	drawImageIOSFix(context, img, sourceX, sourceY, 500, 600, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
   }
  } // end of the window.onload function
