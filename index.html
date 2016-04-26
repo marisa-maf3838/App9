@@ -119,18 +119,24 @@
   canvas.addEventListener("touchstart", doTouchStart, false);//add testing that keeps checking for touches and captures coordinates
   function doTouchStart(event){
   	event.preventDefault();
-  	sourceX = event.targetTouches[0].pageX;
-  	sourceY = event.targetTouches[0].pageY;
-  	if(sourceX<200)
-  		sourceX=0;
+  	sourceX = event.targetTouches[0].pageX;//captures x touch value
+  	sourceY = event.targetTouches[0].pageY;//captures y touch value
+  	sourceX = (sourceX/540)*img.naturalWidth;//adjusts the width to scale with the source image
+  	sourceY = ((sourceY-200)/500)*img.naturalHeight;//adjusts the height to scale with the source image
+  	if(sourceX<300)//these if statements check to see if the x and y values for the source picture is too close to the edge of the picture, if they are they are adjusted accordingly
+  		sourceX=0;//aligns the picture to the edge if it was
+  	else if(sourceX>(img.naturalWidth-300))//checks if the touch was too close to the right margin
+  		sourceX = sourceX - (300+(sourceX-(img.naturalWidth-300)));//adjusts if it was
   	else
-  		sourceX-=200;
-  	if(sourceY<200)
-  		sourceY=0;
+  		sourceX-=300;//merely subtracts to center the image if it wasnt
+  	if(sourceY<250)
+  		sourceY=0;//same as x
+  	else if(sourceY>(img.naturalHeight-250))//same as x
+  		sourceY = sourceY - (250+(sourceY-(img.naturalHeight-250)));	
   	else
-  		sourceY-=200;
-  	drawImageIOSFix(context, img, sourceX, sourceY, 400, 400, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
-  	alert("X=" + sourceX + " Y=" + sourceY);
+  		sourceY-=250;//same as x
+  	drawImageIOSFix(context, img, sourceX, sourceY, 600, 500, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
+  	messageDisplayArea.innerHTML = "Region of Interest selected! Click 'Revert Image' at the bottom of the page , then tap again to choose another ROI, or start over by picking a new image.";//instructions on how to proceed
   }
  } // end of the window.onload function
   	
@@ -145,7 +151,7 @@
 		<h1>Got Zika?</h1>
 	</div><!-- change heading to Got Zika? -->
 
-	<div data-role="main" class="ui-content">	
+	<div data-role="main" class="ui-content">	<!--intro page with instructions and a button that goes to the next page-->
 		<center>So you think you have Zika, huh? Let's find out if that's really true!</center>
 		<p></p>
 		<center>Stand one foot away from the DIY Diagnostics box.</center>
@@ -180,7 +186,7 @@
      
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
-      <p>DIY Diagnostics</p><a href="#pagetwo" onclick="revert();" data-role="button">Revert Image</a>
+      <p>DIY Diagnostics</p><a href="#pagetwo" onclick="revert();" data-role="button">Revert Image</a><!--reverts image to how it was when originally uploaded-->
     </div><!-- /footer -->
   </div><!-- /page -->
  </body>
