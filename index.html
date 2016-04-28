@@ -95,7 +95,8 @@
       var reader = new FileReader();
       reader.onload = function(e) {
         /* messageDisplayArea.innerHTML not needed but allows you to send a message at this point in the program. */
-        messageDisplayArea.innerHTML = "You picked an image!";
+        messageDisplayArea.innerHTML = "Follow the directions below the picture."; //instructions for usablility
+        
         /* new Image() and img.onload start some kind of new image creation process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
         img = new Image();
         img.onload = function() {
@@ -104,7 +105,6 @@
         }// end of img.onload
         img.src = reader.result;
       } //  end of reader.onload
-      alert("Click on left vial!");
       reader.readAsDataURL(file);
       return;
     } // end of the if statement checking that file is an image
@@ -136,12 +136,14 @@
   	else
   		sourceY-=250;//same as x
   	drawImageIOSFix(context, img, sourceX, sourceY, 600, 500, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
-  	messageDisplayArea.innerHTML = "Region of Interest selected! Click 'Revert Image' at the bottom of the page , then tap again to choose another ROI, or start over by picking a new image.";//instructions on how to proceed
   }
  } // end of the window.onload function
   	
   
  </script>
+ <style>
+ 	a {text-align: center;}
+ </style>
  </head>
  <body>
  
@@ -186,8 +188,21 @@
      
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
-      <p>DIY Diagnostics</p><a href="#pagetwo" onclick="revert();" data-role="button">Revert Image</a><!--reverts image to how it was when originally uploaded-->
-    </div><!-- /footer -->
+    <center>Instructions</center>
+     <a href="#pagetwo" onclick="revert();" data-role="button">Revert Image</a>
+     <a href="#pagethree" data-role="button">Next</a> <!--reverts image to how it was when originally uploaded-->
+     </div><!-- /footer -->
+  </div><!-- /page -->
+  
+   <div data-role="page" id="pagethree">
+    <div data-role="header">
+    <h1>Got Zika?</h1></div><!-- /header -->
+    <div data-role="content">	
+      
+    </div><!-- /content -->
+    <div data-role="footer" data-position="fixed">
+    
+     </div><!-- /footer -->
   </div><!-- /page -->
  </body>
 </html>
