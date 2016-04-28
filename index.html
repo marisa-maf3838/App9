@@ -138,8 +138,15 @@
   	drawImageIOSFix(context, img, sourceX, sourceY, 600, 500, 0, 0, 600, 500);//draws cropped image to the same ratio as the canvas but just scaled down
   }
  } // end of the window.onload function
-  	
-  
+ 
+ var process1; //for left vial
+ var process2; //for right vial
+ 
+ var pcount=0; //keeps track of how many times user has hit "process"; function will go to results page when pcount=2
+ 
+ function process(){
+ 	
+ }
  </script>
  <style>
  	a {text-align: center;}
@@ -188,9 +195,10 @@
      
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
-    <center>Instructions</center>
+    <center>Tap left vial and see if vial is in the square. If so, then tap the Process button below. If not, then tap Revert Image below and try again.</center>
+    <center>Tap right vial and repeat above steps.</center>
      <a href="#pagetwo" onclick="revert();" data-role="button">Revert Image</a>
-     <a href="#pagethree" data-role="button">Next</a> <!--reverts image to how it was when originally uploaded-->
+     <a data-role="button">Process</a> <!--reverts image to how it was when originally uploaded-->
      </div><!-- /footer -->
   </div><!-- /page -->
   
