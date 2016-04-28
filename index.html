@@ -242,7 +242,12 @@
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
         var canvas2 = document.getElementById('myCanvas2');
         var context2 = canvas2.getContext("2d");
-	drawImageIOSFix(context2,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
+        img = new Image();
+        img.onload = function() {
+          //Add in deleded text so image shows
+          drawImageIOSFix(context2,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
+        }// end of img.onload
+        img.src = reader.result;
       </script>
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
