@@ -185,7 +185,7 @@
  		resultText.innerHTML = "Red in Left Vial = " + r1.toFixed(2) + "%<br> Green in Left Vial = " + g1.toFixed(2) + "%<br> Blue in Left Vial = " +b1.toFixed(2) +
 					"%<br><br> Red in Right Vial = " + r2.toFixed(2) + "%<br> Green in Right Vial = " + g2.toFixed(2) + "%<br> Blue in Right Vial = " +b2.toFixed(2) + "%";
 		var resultText = document.getElementById("conclusion");
-		if(Math.abs(g2-g1)<=5)
+		if(Math.abs(g2-g1)<=3)
 			resultText.innerHTML = "<br><br>Results are inconclusive because they have similar amounts of green!!!";
 		else if(g2>g1)
 			resultText.innerHTML = "<br><br>Right vial is more green!!!"
