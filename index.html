@@ -158,9 +158,9 @@
  			g1+=data[i+1];
  			b1+=data[i+2];
  		}
- 		r1/=data.length/4; //dividing the color data by 4 (rgb and intensity data)
- 		g1/=data.length/4; //data.length gets 4 times the length of number of data points
- 		b1/=data.length/4; //if we don't divide by 255 then we get numbers ranging from 1-255 for color data
+ 		r1/=data.length/4/255; //dividing the color data by 4 (rgb and intensity data)
+ 		g1/=data.length/4/255 //data.length gets 4 times the length of number of data points
+ 		b1/=data.length/4/255; //if we don't divide by 255 then we get numbers ranging from 1-255 for color data
  		pcount++;
  	
  		
@@ -171,9 +171,9 @@
  			g2+=data[i+1];
  			b2+=data[i+2];
  		}
- 		r2/=data.length/4; //dividing the color data by 4 (rgb and intensity data)
- 		g2/=data.length/4;
- 		b2/=data.length/4;
+ 		r2/=data.length/4/255; //dividing the color data by 4 (rgb and intensity data)
+ 		g2/=data.length/4/255;
+ 		b2/=data.length/4/255;
  		document.location.href = 'http://alitaqvi.github.io/App9-Marisa/#pagethree'; //this has to have the url for each person (copy from settings); have to have /#pagethree at the end; 
  		var resultText = document.getElementById("results");
  		resultText.innerHTML = "Red in Left Vial = " + r1.toFixed(2) + "<br> Green in Left Vial = " + g1.toFixed(2) + "<br> Blue in Left Vial = " +b1.toFixed(2) +
