@@ -140,13 +140,13 @@
  } // end of the window.onload function
  
  //for left vial
- var r1=0; //red
- var g1=0; //green
- var b1=0; //blue
+ var r1=1; //red
+ var g1=1; //green
+ var b1=1; //blue
 //for right vial
- var r2=0;
- var g2=0;
- var b2=0;
+ var r2=1;
+ var g2=1;
+ var b2=1;
  var pcount=0; //keeps track of how many times user has hit "process"; function will go to results page when pcount=2
  
  function process(){
@@ -158,24 +158,29 @@
  			g1+=data[i+1];
  			b1+=data[i+2];
  		}
- 		r1/=(data.length/4)*100; //dividing the color data by 4 (rgb and intensity data)
- 		g1/=(data.length/4)*100; //data.length gets 4 times the length of number of data points
- 		b1/=(data.length/4)*100;
+ 		alert("red="+r1 + " green="+g1 + " blue="+b1);
+ 		alert("data.length=" +data.length/4);
+ 		r1/=data.length/4; //dividing the color data by 4 (rgb and intensity data)
+ 		g1/=data.length/4; //data.length gets 4 times the length of number of data points
+ 		b1/=data.length/4; //if we don't divide by 255 then we get numbers ranging from 1-255 for color data
  		pcount++;
+ 	
+ 		
  	}
  	else{
  		for(var i= 0;i<data.length; i +=4){
- 			r2+=data[i];
- 			g2+=data[i+1];
- 			b2+=data[i+2];
+ 			r2+=data[i]/255;
+ 			g2+=data[i+1]/255;
+ 			b2+=data[i+2]/255;
  		}
- 		r2/=(data.length/4)*100; //dividing the color data by 4 (rgb and intensity data)
- 		g2/=(data.length/4)*100;
- 		b2/=(data.length/4)*100;
- 		document.location.href = 'http://marisa-maf3838.github.io/App9/#pagethree';
+ 		r2/=data.length/4; //dividing the color data by 4 (rgb and intensity data)
+ 		g2/=data.length/4;
+ 		b2/=data.length/4;
+ 		document.location.href = 'http://tara-12.github.io/App9-marisa1/#pagethree'; //this has to have the url for each person (copy from settings); have to have /#pagethree at the end; 
  		var resultText = document.getElementById("results");
- 		resultText.innerHTML = "Red in Left Vial=" + r1 + "%" + "<br> Green in Left Vial=" + g1 + "%" + "<br> Blue in Left Vial=" +b1 + "%";
- 	}
+ 		resultText.innerHTML = "Red in Left Vial=" + r1.toFixed(10) + "<br> Green in Left Vial=" + g1.toFixed(10) + "<br> Blue in Left Vial=" +b1.toFixed(10) +
+					"<br> Red in Right Vial=" + r2.toFixed(10) + "<br> Green in Right Vial=" + g2.toFixed(10) + "<br> Blue in Right Vial=" +b2.toFixed(10);
+ 	} //got rid of % sign for now
  }
  </script>
  <style>
@@ -238,7 +243,7 @@
     <div data-role="content">
     	<center>Results</center>
     	<p id="results"></p>
-       <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
+       <!-- <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas> -->
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
        /* var canvas2 = document.getElementById('myCanvas2');
         var context2 = canvas2.getContext("2d");
