@@ -150,7 +150,7 @@
  var pcount=0; //keeps track of how many times user has hit "process"; function will go to results page when pcount=2
  
  function process(){
- 	var imageData= context.getImageData(sourceX, sourceY, 600, 500);
+ 	var imageData= context.getImageData(0, 0, 600, 500);
  	var data = imageData.data;
  	if(pcount == 0){
  		for(var i= 0;i<data.length; i +=4){
