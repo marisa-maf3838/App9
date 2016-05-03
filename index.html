@@ -158,10 +158,14 @@
  			g1+=data[i+1];
  			b1+=data[i+2];
  		}
+ 		alert("red="+r1 + " green="+g1 + " blue="+b1);
+ 		alert("data.length=" +data.length/4);
  		r1/=data.length/4; //dividing the color data by 4 (rgb and intensity data)
  		g1/=data.length/4; //data.length gets 4 times the length of number of data points
  		b1/=data.length/4; //if we don't divide by 255 then we get numbers ranging from 1-255 for color data
  		pcount++;
+ 	
+ 		
  	}
  	else{
  		for(var i= 0;i<data.length; i +=4){
