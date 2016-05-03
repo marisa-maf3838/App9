@@ -184,10 +184,13 @@
  		var resultText = document.getElementById("results");
  		resultText.innerHTML = "Red in Left Vial = " + r1.toFixed(2) + "%<br> Green in Left Vial = " + g1.toFixed(2) + "%<br> Blue in Left Vial = " +b1.toFixed(2) +
 					"%<br><br> Red in Right Vial = " + r2.toFixed(2) + "%<br> Green in Right Vial = " + g2.toFixed(2) + "%<br> Blue in Right Vial = " +b2.toFixed(2) + "%";
- 		var resultText = document.getElementById("conculsion");
- 		if(Math.abs(g2-g1<=5)
- 		
- 		resultText.innerHTML ="";
+		var resultText = document.getElementById("conclusion");
+		if(Math.abs(g2-g1)<=3)
+			resultText.innerHTML = "<br><br>Results are inconclusive because they have similar amounts of green!!!";
+		else if(g2>g1)
+			resultText.innerHTML = "<br><br>Right vial is more green!!!"
+		else
+			resultText.innerHTML = "<br><br>Left vial is more green!!!";
  	} //got rid of % sign for now
  }
  </script>
@@ -250,8 +253,8 @@
     <h1>Got Zika?</h1></div><!-- /header -->
     <div data-role="content">
     	<center>Results</center>
-    	<p id="results"></p>
-    	<p id="results">Conclusion</p>
+    	<center id="results"></center>
+    	<center id="conclusion"></center>
        <!-- <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas> -->
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
        /* var canvas2 = document.getElementById('myCanvas2');
