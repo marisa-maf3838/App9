@@ -158,9 +158,9 @@
  			g1+=data[i+1];
  			b1+=data[i+2];
  		}
- 		r1/=(data.length/4*100); //dividing the color data by 4 (rgb and intensity data)
- 		g1/=(data.length/4*100); //data.length gets 4 times the length of number of data points
- 		b1/=(data.length/4*100);
+ 		r1/=data.length/4; //dividing the color data by 4 (rgb and intensity data)
+ 		g1/=data.length/4; //data.length gets 4 times the length of number of data points
+ 		b1/=data.length/4;
  		pcount++;
  	}
  	else{
@@ -169,13 +169,13 @@
  			g2+=data[i+1];
  			b2+=data[i+2];
  		}
- 		r2/=(data.length/4*100); //dividing the color data by 4 (rgb and intensity data)
- 		g2/=(data.length/4*100);
- 		b2/=(data.length/4*100);
+ 		r2/=data.length/4; //dividing the color data by 4 (rgb and intensity data)
+ 		g2/=data.length/4;
+ 		b2/=data.length/4;
  		document.location.href = 'http://tara-12.github.io/App9-marisa1/#pagethree'; //this has to have the url for each person (copy from settings); have to have /#pagethree at the end; 
  		var resultText = document.getElementById("results");
- 		resultText.innerHTML = "Red in Left Vial=" + r1 + "%" + "<br> Green in Left Vial=" + g1 + "%" + "<br> Blue in Left Vial=" +b1 + "%";
- 	}
+ 		resultText.innerHTML = "Red in Left Vial=" + r1 + "<br> Green in Left Vial=" + g1 + "<br> Blue in Left Vial=" +b1;
+ 	} //got rid of % sign for now
  }
  </script>
  <style>
