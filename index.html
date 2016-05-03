@@ -154,32 +154,32 @@
  	var data = imageData.data;
  	if(pcount == 0){
  		for(var i= 0;i<data.length; i +=4){
- 			r1+=data[i]/255; //color data only goes from 0 to 255
- 			g1+=data[i+1]/255;
- 			b1+=data[i+2]/255;
+ 			r1+=data[i]; //color data only goes from 0 to 255
+ 			g1+=data[i+1];
+ 			b1+=data[i+2];
  		}
  		//alert("red="+r1 + " green="+g1 + " blue="+b1);
  		//alert("data.length=" +data.length/4);
- 		r1/=data.length/4*100; //dividing the color data by 4 (rgb and intensity data)
- 		g1/=data.length/4*100; //data.length gets 4 times the length of number of data points
- 		b1/=data.length/4*100; //if we don't divide by 255 then we get numbers ranging from 1-255 for color data
+ 		r1/=data.length/4; //dividing the color data by 4 (rgb and intensity data)
+ 		g1/=data.length/4; //data.length gets 4 times the length of number of data points
+ 		b1/=data.length/4; //if we don't divide by 255 then we get numbers ranging from 1-255 for color data
  		pcount++;
  	
  		
  	}
  	else{
  		for(var i= 0;i<data.length; i +=4){
- 			r2+=data[i]/255;
- 			g2+=data[i+1]/255;
- 			b2+=data[i+2]/255;
+ 			r2+=data[i];
+ 			g2+=data[i+1];
+ 			b2+=data[i+2];
  		}
- 		r2/=data.length/4*100; //dividing the color data by 4 (rgb and intensity data)
- 		g2/=data.length/4*100;
- 		b2/=data.length/4*100;
+ 		r2/=data.length/4; //dividing the color data by 4 (rgb and intensity data)
+ 		g2/=data.length/4;
+ 		b2/=data.length/4;
  		document.location.href = 'http://alitaqvi.github.io/App9-Marisa/#pagethree'; //this has to have the url for each person (copy from settings); have to have /#pagethree at the end; 
  		var resultText = document.getElementById("results");
- 		resultText.innerHTML = "Red in Left Vial = " + r1.toFixed(2) + "%<br> Green in Left Vial = " + g1.toFixed(2) + "%<br> Blue in Left Vial = " +b1.toFixed(2) +
-					"%<br><br> Red in Right Vial = " + r2.toFixed(2) + "%<br> Green in Right Vial = " + g2.toFixed(2) + "%<br> Blue in Right Vial = " +b2.toFixed(2) + "%";
+ 		resultText.innerHTML = "Red in Left Vial = " + r1.toFixed(2) + "<br> Green in Left Vial = " + g1.toFixed(2) + "<br> Blue in Left Vial = " +b1.toFixed(2) +
+					"<br><br> Red in Right Vial = " + r2.toFixed(2) + "<br> Green in Right Vial = " + g2.toFixed(2) + "<br> Blue in Right Vial = " +b2.toFixed(2);
  	} //got rid of % sign for now
  }
  </script>
