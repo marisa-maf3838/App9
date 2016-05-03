@@ -154,11 +154,11 @@
  	var data = imageData.data;
  	if(pcount == 0){
  		for(var i= 0;i<data.length; i +=4){
- 			r1+=data[i]; //color data only goes from 0 to 255
- 			g1+=data[i+1];
- 			b1+=data[i+2];
+ 			r1+=data[i]/255; //color data only goes from 0 to 255
+ 			g1+=data[i+1]/255;
+ 			b1+=data[i+2]/255;
  		}
- 		r1/=4; //dividing the color data by 4 (rgb and intensity data)
+ 		r1/=data.length/4; //dividing the color data by 4 (rgb and intensity data)
  		g1/=data.length/4; //data.length gets 4 times the length of number of data points
  		b1/=data.length/4;
  		pcount++;
