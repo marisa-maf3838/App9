@@ -161,9 +161,9 @@
  		r1/=data.length/4; //dividing the color data by 4 (rgb and intensity data)
  		g1/=data.length/4 //data.length gets 4 times the length of number of data points
  		b1/=data.length/4; //if we don't divide by 255 then we get numbers ranging from 1-255 for color data
- 		r1/=255;
- 		g1/=255;
- 		b1/=255;
+ 		r1=r1/255*100;
+ 		g1/=255*100;
+ 		b1/=255*100;
  		pcount++;
  	
  		
