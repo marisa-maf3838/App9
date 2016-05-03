@@ -140,13 +140,13 @@
  } // end of the window.onload function
  
  //for left vial
- var r1=1; //red
- var g1=1; //green
- var b1=1; //blue
+ var r1=0; //red
+ var g1=0; //green
+ var b1=0; //blue
 //for right vial
- var r2=1;
- var g2=1;
- var b2=1;
+ var r2=0;
+ var g2=0;
+ var b2=0;
  var pcount=0; //keeps track of how many times user has hit "process"; function will go to results page when pcount=2
  
  function process(){
@@ -173,13 +173,13 @@
  			g2+=data[i+1]/255;
  			b2+=data[i+2]/255;
  		}
- 		r2/=data.length/4; //dividing the color data by 4 (rgb and intensity data)
- 		g2/=data.length/4;
- 		b2/=data.length/4;
+ 		r2/=data.length/4*100; //dividing the color data by 4 (rgb and intensity data)
+ 		g2/=data.length/4*100;
+ 		b2/=data.length/4*100;
  		document.location.href = 'http://alitaqvi.github.io/App9-Marisa/#pagethree'; //this has to have the url for each person (copy from settings); have to have /#pagethree at the end; 
  		var resultText = document.getElementById("results");
- 		resultText.innerHTML = "Red in Left Vial=" + r1.toFixed(10) + "<br> Green in Left Vial=" + g1.toFixed(10) + "<br> Blue in Left Vial=" +b1.toFixed(10) +
-					"<br> Red in Right Vial=" + r2.toFixed(10) + "<br> Green in Right Vial=" + g2.toFixed(10) + "<br> Blue in Right Vial=" +b2.toFixed(10);
+ 		resultText.innerHTML = "Red in Left Vial=" + r1.toFixed(0) + "<br> Green in Left Vial=" + g1.toFixed(0) + "<br> Blue in Left Vial=" +b1.toFixed(0) +
+					"<br> Red in Right Vial = " + r2.toFixed(2) + "%<br> Green in Right Vial = " + g2.toFixed(2) + "%<br> Blue in Right Vial = " +b2.toFixed(2);
  	} //got rid of % sign for now
  }
  </script>
