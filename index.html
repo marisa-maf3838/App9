@@ -184,6 +184,10 @@
  		var resultText = document.getElementById("results");
  		resultText.innerHTML = "Red in Left Vial = " + r1.toFixed(2) + "%<br> Green in Left Vial = " + g1.toFixed(2) + "%<br> Blue in Left Vial = " +b1.toFixed(2) +
 					"%<br><br> Red in Right Vial = " + r2.toFixed(2) + "%<br> Green in Right Vial = " + g2.toFixed(2) + "%<br> Blue in Right Vial = " +b2.toFixed(2) + "%";
+ 		var resultText = document.getElementById("conculsion");
+ 		if(Math.abs(g2-g1<=5)
+ 		
+ 		resultText.innerHTML ="";
  	} //got rid of % sign for now
  }
  </script>
@@ -247,6 +251,7 @@
     <div data-role="content">
     	<center>Results</center>
     	<p id="results"></p>
+    	<p id="results">Conclusion</p>
        <!-- <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas> -->
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
        /* var canvas2 = document.getElementById('myCanvas2');
