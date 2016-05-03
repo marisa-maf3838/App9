@@ -154,7 +154,8 @@
  	var data = imageData.data;
  	if(pcount == 0){
  		for(var i= 0;i<data.length; i +=4){
- 			r1+=data[i]/765; //color data only goes from 0 to 255
+ 			var tsum = 
+ 			r1+=data[i]; //color data only goes from 0 to 255
  			g1+=data[i+1]/765;
  			b1+=data[i+2]/765;
  		}
@@ -240,14 +241,14 @@
     	<p id="results"></p>
        <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
-        var canvas2 = document.getElementById('myCanvas2');
+       /* var canvas2 = document.getElementById('myCanvas2');
         var context2 = canvas2.getContext("2d");
         img = new Image();
         img.onload = function() {
           //Add in deleded text so image shows
           drawImageIOSFix(context2,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
         }// end of img.onload
-        img.src = reader.result;
+        img.src = reader.result; */
       </script>
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
